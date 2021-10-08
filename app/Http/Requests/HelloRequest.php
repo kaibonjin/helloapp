@@ -31,7 +31,18 @@ class HelloRequest extends FormRequest
         return [
             'name' => 'required',
             'mail' => 'email',
-            'age' => 'numeric|between:0,150',
+            'age' => 'numeric|between:0,150', //このnumericはinteger型じゃないとだめというバリデーションで真ん中の｜で分けて違うバリデーションを入れてる
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => '名前は必ず入力してください',
+            'mail.required' => 'メールアドレスが必要です',
+            'age.between' => '年齢は0~150の間で入力してください',
+            'age.numeric' => '年齢は整数で記入してください',
+
         ];
     }
 }

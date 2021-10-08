@@ -10,16 +10,15 @@ class HelloController extends Controller
 {
     public function index (Request $request)
     {
-        // $data = [
-        //     ['name'=>'山田太郎', 'mail'=>'taro@yamada'],
-        //     ['name'=>'小山', 'mail'=>'taro@こやま'],
-        //     ['name'=>'スズキ', 'mail'=>'taro@yaa'],
-        // ];
-        return view('hello.index', ['data'=>$request->data]);
+        return view('hello.index', ['msg'=>'フォーム入力：']);
     }
 
     public function post (Request $request)
     {
-        return view('hello.index');
+        $validate_rule = [
+            'name' => 'required', 'mail' => 'email', 'age' => 'numeric|between:0,150',
+        ];
+        $this->validate($request, $validate_rule);
+        return view('hello.index', ['msg'=>'正しく入力されました']);
     }
 }

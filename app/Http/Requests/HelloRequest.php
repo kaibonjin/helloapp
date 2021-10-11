@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Myrule;
 
 class HelloRequest extends FormRequest
 {
@@ -31,7 +32,7 @@ class HelloRequest extends FormRequest
         return [
             'name' => 'required',
             'mail' => 'email',
-            'age' => 'numeric|hello', //このnumericはinteger型じゃないとだめというバリデーションで真ん中の｜で分けて違うバリデーションを入れてる
+            'age' => ['numeric', new Myrule(5)], //このnumericはinteger型じゃないとだめというバリデーションで真ん中の｜で分けて違うバリデーションを入れてる
         ];
     }
 

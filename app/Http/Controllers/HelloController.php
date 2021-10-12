@@ -41,9 +41,8 @@ class HelloController extends Controller
         $id = $request->id;
         if ($id > 0)
         {
-        $param = ['id' => $request->id];
-        $item = DB::select('select * from people where id = :id', $param);
-        return view('hello.edit', ['form' => $item[0]]);
+        $item = DB::table('people')->where('id', $id)->first();
+        return view('hello.edit', ['form' => $item]);
 
 
         } else {
@@ -58,7 +57,7 @@ class HelloController extends Controller
             'mail' => $request->mail,
             'age' => $request->age,
         ];
-        DB::update('update people set name= :name, mail= :mail, age= :age where id = :id', $param);
+        DB::table('people')->where('id', $request->id)->update($param);
         return redirect('/hello');
     }
     public function del(Request $request)

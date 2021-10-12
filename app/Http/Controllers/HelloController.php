@@ -66,8 +66,8 @@ class HelloController extends Controller
         if ($id > 0)
         {
         $param = ['id' => $request->id];
-        $item = DB::select('select * from people where id = :id', $param);
-        return view('hello.del', ['form' => $item[0]]);
+        $item = DB::table('people')->where('id', $request->id)->first();
+        return view('hello.del', ['form' => $item]);
 
         } else {
             return redirect('/hello');
@@ -76,8 +76,7 @@ class HelloController extends Controller
 
     public function remove(Request $request)
     {
-        $param = ['id' => $request->id];
-        DB::delete('delete from people where id = :id', $param);
+        DB::table('people')->where('id', $request->id)->delete();
         return redirect('/hello');
     }
 

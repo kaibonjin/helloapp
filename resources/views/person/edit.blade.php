@@ -18,7 +18,7 @@
     </ul>
 </div>
 @endif
-    <form action="/person/add" method="post">
+    <form action="/person/edit" method="post">
         <table>
             @csrf
             <input type="hidden" name="id" value="{{$form->id}}">

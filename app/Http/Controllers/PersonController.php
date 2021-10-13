@@ -18,7 +18,7 @@ class PersonController extends Controller
     }
     public function search(Request $request)
     {
-        $item = Person::find($request->input);
+        $item = Person::nameEqual($request->input)->first();
         $param = ['input'=> $request->input, 'item'=>$item];
         return view('person.find', $param);
     }

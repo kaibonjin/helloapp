@@ -38,3 +38,4 @@ Route::post('person/del', [PersonController::class, 'remove']);
 Route::get('board', [BoardController::class, 'index']);
 Route::get('board/add', [BoardController::class, 'add']);
 Route::post('board/add', [BoardController::class, 'create']);
+Route::resource('rest', 'RestappController');

@@ -3,6 +3,7 @@
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\RestappController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\HelloMiddleware;
 
@@ -38,4 +39,4 @@ Route::post('person/del', [PersonController::class, 'remove']);
 Route::get('board', [BoardController::class, 'index']);
 Route::get('board/add', [BoardController::class, 'add']);
 Route::post('board/add', [BoardController::class, 'create']);
-Route::resource('rest', 'RestappController');
+Route::resource('rest', RestappController::class);

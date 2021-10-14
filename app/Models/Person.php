@@ -22,8 +22,8 @@ class Person extends Model
         return $this->id . ': ' . $this->name . ' (' . $this->age . ')';
     }
 
-    public function board()
+    public function boards()
     {
-        return $this->hasOne(Board::class, 'person_id');
+        return $this->hasMany(Board::class);
     }
 }

@@ -19,7 +19,7 @@ use App\Http\Middleware\HelloMiddleware;
 */
 
 // Route::get('hello/{id?}', [HelloController::class, 'index']);
-Route::get('hello', [HelloController::class, 'index'])->middleware('helo');
+Route::get('hello', [HelloController::class, 'index'])->middleware('auth');
 Route::get('hello/add', [HelloController::class, 'add']);
 Route::post('hello/add', [HelloController::class, 'create']);
 Route::get('hello/edit', [HelloController::class, 'edit']);
@@ -43,3 +43,7 @@ Route::resource('rest', RestappController::class);
 Route::get('hello/rest', [HelloController::class, 'rest']);
 Route::get('hello/session', [HelloController::class, 'ses_get']);
 Route::get('hello/session', [HelloController::class, 'ses_put']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -44,7 +44,7 @@ class HelloController extends Controller
 
         ];
         DB::table('people')->insert($param);
-        return redirect('/hello');
+        return redirect()->route('hello');
     }
     public function edit(Request $request)
     {

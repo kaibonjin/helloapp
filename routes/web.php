@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // Route::get('hello/{id?}', [HelloController::class, 'index']);
-Route::get('hello', [HelloController::class, 'index'])->middleware('auth');
+Route::get('hello', [HelloController::class, 'index'])->middleware('auth')->name('hello');
 Route::get('hello/add', [HelloController::class, 'add']);
 Route::post('hello/add', [HelloController::class, 'create']);
 Route::get('hello/edit', [HelloController::class, 'edit']);

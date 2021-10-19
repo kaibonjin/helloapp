@@ -56,7 +56,7 @@ class HelloController extends Controller
 
 
         } else {
-            return redirect('/hello');
+            return redirect()->route('hello');
         }
     }
     public function update(Request $request)
